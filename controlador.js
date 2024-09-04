@@ -22,29 +22,56 @@ const fnRetornaIVA = (importeBase, tipoArticulo) => {
 
 
 
+
 window.addEventListener("load", () => {
     console.log("esta funcionando");
 
     const idImporteBase = document.querySelector("#idImporteBase");
     const idTipoArticulo = document.querySelector("#idTipoArticulo");
     const idBtnCalcularTotales = document.querySelector("#idBtnCalcularTotales");
-    const importeBase = document.querySelector("#importeBase");
+    const importeInvertir = document.querySelector("#importeInvertir");
     const importeIva = document.querySelector("#importeIva");
     const importefinal = document.querySelector("#importefinal");
 
 
 
     idBtnCalcularTotales.addEventListener("click", () => {
-        const baseDeFactura = 10000;
-        console.log(baseDeFactura);
+        let baseDeFactura = Number (idImporteBase.value);
+        
+        console.log(`log Importe base ${baseDeFactura}`);
 
 
-        const tipoDelProducto = idTipoArticulo.value;
-        console.log(tipoDelProducto);
+        let tipoDelProducto = Number(idTipoArticulo.value);
 
 
-        const resultadoIVA = fnRetornaIVA(baseDeFactura, tipoDelProducto);
+        let resultadoIVA = fnRetornaIVA(baseDeFactura, tipoDelProducto);
         console.log(resultadoIVA);
+        
+        importeInvertir.textContent =`El Importe Base es de ${baseDeFactura}`;
+        
+        importefinal.textContent = `El Importe Final es ${resultadoIVA} `;
+        
+        if (tipoDelProducto ===1)
+         {
+            
+             importeIva.textContent =`El Tipo de Importe IVA es de % 21`;
+        }
+        if (tipoDelProducto ===2)
+         {
+            
+             importeIva.textContent =`El Tipo de Importe IVA es de % 27`;
+        }
+        if (tipoDelProducto ===3)
+         {
+            
+             importeIva.textContent =`El Tipo de Importe IVA es de % 10.5`;
+        }
+        if (tipoDelProducto ===4)
+         {
+            
+             importeIva.textContent =`El Tipo de Importe IVA es de % 5`;
+        }
+        return 0;
     })
 
 
